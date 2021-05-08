@@ -1,0 +1,107 @@
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quidditch Game</title>
+    <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <style>
+        body {
+  background: #3498db;
+}
+
+.snitch {
+  background-image: url('http://fc03.deviantart.net/fs23/f/2007/352/4/c/HP___GOLDEN_SNITCH_by_Aoeiya.gif');
+  margin: 30% 0 0 50%;
+  height: 125px;
+  opacity: 0;
+  width: 150px;
+  transition: all 1s ease-in-out;
+}
+
+.computer {
+  color: white;
+  display: table;
+  font-family: 'Dancing Script', cursive;
+  font-size: 4em;
+  opacity: 1;
+  position: absolute;
+  top: -200px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transition: opacity 0.5s;
+  width: 75%;
+  text-align: center;
+}
+
+.startgame {
+  height: 100px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5em;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transition: all 0.5s;
+  width: 300px;
+  text-align: center;
+}
+
+.scoreboard {
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  transition: opacity 0.5s;
+}
+    </style>
+  </head>
+  <body>
+    <h1 class="computer">Click On The Golden Snitch To Win!</h1>
+    <button class="startgame">Start Game</button>
+    <div class="snitch"></div>
+    <h2 class="scoreboard"> Score: <span class="score">0</span></h2>
+    <script>
+        // Quidditch Game
+  
+  var scoreNum = 0;
+  var difficulty = 10;
+  
+  $('.startgame').click(function() {
+    $('.computer, .startgame').css({'opacity': '0', 'z-index': '-1'});
+    $('.snitch').css('opacity', '1');
+    scoreNum = 0;
+    $('.score').text(scoreNum);
+    setInterval(function() {
+      var x = Math.round(Math.random() * $(window).width() - 150);
+      var y = Math.round(Math.random() * $(window).height() - 150);
+      var i = Math.round(Math.random() * difficulty);
+      var marginX = ['marginLeft', 'marginRight'];
+      var marginY = ['marginTop'];
+      $('.snitch').css(marginX[i], x);
+      $('.snitch').css(marginY[i], y);
+    }, 10);
+  });
+  
+  $('.snitch').click(function() {
+    $('.score').text(scoreNum++);
+    if (scoreNum == 11) {
+      $('.snitch').css('opacity', '0');
+      $('.computer').text('You Win!').css({'opacity': '1', 'z-index': '0'});
+      $('.startgame').text('Play Again?').css({'opacity': '1', 'z-index': '0'});
+    }
+  });
+  
+    </script>
+  </body>
+  
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+</html>
+
+

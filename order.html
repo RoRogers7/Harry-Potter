@@ -1,0 +1,664 @@
+
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>12 Grimmauld Place</title>
+      <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <style>
+         @import url("https://fonts.googleapis.com/css?family=Asul:400,700|Alex+Brush");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Asul", sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 22px;
+  height: 30px;
+  line-height: 30px;
+  transition: all 2s ease;
+}
+h1.question-text-2 {
+  opacity: 0;
+  display: none;
+  -webkit-animation: shower 5s ease forwards;
+          animation: shower 5s ease forwards;
+}
+h1.clean {
+  opacity: 1;
+  transition: all 2s ease;
+}
+h1.hider {
+  -webkit-animation: hider 5s ease forwards;
+          animation: hider 5s ease forwards;
+}
+
+.question {
+  margin-top: 30px;
+}
+
+.answer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #000;
+  font-family: "Alex Brush", cursive;
+  height: 54px;
+  width: 180px;
+  font-size: 48px;
+  line-height: 54px;
+  text-align: center;
+  color: #240dff;
+  padding: 0 10px;
+  margin-left: 30px;
+  transition: all 2s ease;
+}
+input:disabled {
+  background-color: transparent;
+}
+input.hidden {
+  opacity: 0;
+}
+input.q2 {
+  width: 440px;
+  margin-left: 70px;
+  opacity: 1;
+  transition: all 2s ease;
+  -webkit-animation: shower 5s ease forwards;
+          animation: shower 5s ease forwards;
+}
+input.q2.hider {
+  -webkit-animation: hider 5s ease forwards;
+          animation: hider 5s ease forwards;
+}
+input.bloody {
+  -webkit-animation: bloody 5s ease forwards;
+          animation: bloody 5s ease forwards;
+}
+
+.answer svg {
+  width: 54px;
+  margin-left: 20px;
+}
+.answer svg.bloody {
+  -webkit-animation: bloody 5s ease forwards;
+          animation: bloody 5s ease forwards;
+}
+
+.grimmauld-place {
+  display: flex;
+  margin: 30px auto 0;
+  width: 540px;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.sidewalk {
+  width: 648px;
+  height: 15px;
+  background: #cbd4d1;
+  margin: 0 auto;
+}
+
+.house {
+  width: 180px;
+  height: 450px;
+  background-color: #5c5849;
+  border-top: 10px solid #cbd4d1;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
+  padding-top: 25px;
+}
+
+.eleven {
+  margin-right: -90px;
+  z-index: 99;
+}
+
+.twelve {
+  background-color: #403d32;
+  border-top: 10px solid #afbdb8;
+  opacity: 0.3;
+  transition: all 5s ease;
+}
+.twelve.secret {
+  opacity: 1;
+}
+
+.thirteen {
+  margin-left: -90px;
+  z-index: 99;
+}
+
+.floor-flex {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.floor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 0;
+  height: 90px;
+}
+.floor-grid .floor-flex {
+  height: 90px;
+  grid-row: 1/4;
+  grid-column: 1/4;
+}
+.floor-grid .balcony {
+  grid-row: 3/4;
+  grid-column: 1/4;
+  z-index: 9;
+}
+
+.window {
+  border: 2px solid #cbd4d1;
+  width: 34px;
+  box-shadow: inset 0 2px rgba(0, 0, 0, 0.3);
+}
+.window.fourth {
+  height: 35px;
+  border-bottom: 3px solid #cbd4d1;
+  position: relative;
+  box-shadow: 0 -3px 6px 6px rgba(36, 35, 29, 0.15);
+  background: linear-gradient(to right, transparent 0%, transparent 28%, #cbd4d1 29%, #cbd4d1 33%, transparent 34%, transparent 66%, #cbd4d1 67%, #cbd4d1 71%, transparent 72%, transparent 100%), linear-gradient(to bottom, transparent 0%, transparent 28%, #cbd4d1 29%, #cbd4d1 36%, rgba(0, 0, 0, 0.3) 37%, rgba(0, 0, 0, 0.3) 43%, transparent 44%, transparent 66%, #cbd4d1 67%, #cbd4d1 69%, transparent 71%, transparent 100%), #868983;
+}
+.window.fourth:after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  bottom: -5px;
+  left: -5px;
+  background-color: #cbd4d1;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.window.third {
+  height: 45px;
+  border-bottom: 3px solid #cbd4d1;
+  position: relative;
+  box-shadow: 0 -3px 6px 6px rgba(36, 35, 29, 0.15);
+  background: linear-gradient(to right, transparent 0%, transparent 28%, #cbd4d1 29%, #cbd4d1 33%, transparent 34%, transparent 66%, #cbd4d1 67%, #cbd4d1 71%, transparent 72%, transparent 100%), linear-gradient(to bottom, transparent 0%, transparent 22%, #cbd4d1 23%, #cbd4d1 25%, transparent 26%, transparent 46%, #cbd4d1 47%, #cbd4d1 52%, rgba(0, 0, 0, 0.3) 53%, rgba(0, 0, 0, 0.3) 56%, transparent 57%, transparent 73%, #cbd4d1 74%, #cbd4d1 76%, transparent 77%, transparent 100%), #868983;
+}
+.window.third:after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  bottom: -5px;
+  left: -5px;
+  background-color: #cbd4d1;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.window.second {
+  height: 90px;
+  border-bottom: 3px solid #cbd4d1;
+  position: relative;
+  box-shadow: 0 -3px 6px 9px rgba(36, 35, 29, 0.15);
+  background: linear-gradient(to right, transparent 0%, transparent 28%, #cbd4d1 29%, #cbd4d1 33%, transparent 34%, transparent 66%, #cbd4d1 67%, #cbd4d1 71%, transparent 72%, transparent 100%), linear-gradient(to bottom, transparent 0%, transparent 22%, #cbd4d1 23%, #cbd4d1 24%, transparent 24%, transparent 46%, #cbd4d1 47%, #cbd4d1 50%, rgba(0, 0, 0, 0.3) 51%, rgba(0, 0, 0, 0.3) 56%, transparent 57%, transparent 73%, #cbd4d1 74%, #cbd4d1 75%, transparent 76%, transparent 100%), #1f2329;
+}
+
+.balcony {
+  width: 80%;
+  height: 32px;
+  margin: 0 auto;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  border-bottom: 3px solid #cbd4d1;
+  background: linear-gradient(to right, #5c5849 0%, #5c5849 3%, #000 3%, #000 4%, transparent 4%, transparent 13%, #000 13%, #000 14%, transparent 14%, transparent 23%, #000 23%, #000 24%, transparent 24%, transparent 33%, #000 33%, #000 34%, transparent 34%, transparent 43%, #000 43%, #000 44%, transparent 44%, transparent 53%, #000 53%, #000 54%, transparent 54%, transparent 63%, #000 63%, #000 64%, transparent 64%, transparent 73%, #000 73%, #000 74%, transparent 74%, transparent 83%, #000 83%, #000 84%, transparent 84%, transparent 95%, #000 95%, #000 87%, #5c5849 97%, #5c5849 100%), linear-gradient(to bottom, #000 0%, #000 3%, transparent 3%, transparent 85%, #000 85%, #000 86%, transparent 86%, transparent 100%);
+}
+
+.twelve .balcony {
+  background: linear-gradient(to right, #403d32 0%, #403d32 3%, #000 3%, #000 4%, transparent 4%, transparent 13%, #000 13%, #000 14%, transparent 14%, transparent 23%, #000 23%, #000 24%, transparent 24%, transparent 33%, #000 33%, #000 34%, transparent 34%, transparent 43%, #000 43%, #000 44%, transparent 44%, transparent 53%, #000 53%, #000 54%, transparent 54%, transparent 63%, #000 63%, #000 64%, transparent 64%, transparent 73%, #000 73%, #000 74%, transparent 74%, transparent 83%, #000 83%, #000 84%, transparent 84%, transparent 95%, #000 95%, #000 87%, #403d32 97%, #403d32 100%), linear-gradient(to bottom, #000 0%, #000 3%, transparent 3%, transparent 85%, #000 85%, #000 86%, transparent 86%, transparent 100%);
+}
+
+.first-floor-grid {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 4px;
+  height: 145px;
+  background: linear-gradient(to bottom, #cbd4d1 0%, #cbd4d1 7%, #8c8b83 7%, #8c8b83 9%, transparent 9%, transparent 19%, #8c8b83 19%, #8c8b83 20%, transparent 20%, transparent 29%, #8c8b83 29%, #8c8b83 30%, transparent 30%, transparent 39%, #8c8b83 39%, #8c8b83 40%, transparent 40%, transparent 49%, #8c8b83 49%, #8c8b83 50%, transparent 50%, transparent 59%, #8c8b83 59%, #8c8b83 60%, transparent 60%, transparent 69%, #8c8b83 69%, #8c8b83 70%, transparent 70%, transparent 79%, #8c8b83 79%, #8c8b83 80%, transparent 80%, transparent 89%, #8c8b83 89%, #8c8b83 90%, transparent 90%, transparent 99%, #8c8b83 99%, #8c8b83 100%);
+  background-color: #bcbbb5;
+}
+.first-floor-grid .window-area {
+  grid-row: 1/5;
+  grid-column: 1/4;
+  width: 100%;
+  height: 100%;
+}
+.first-floor-grid .window {
+  height: 70px;
+  width: 50px;
+  margin: 15px auto 0;
+  position: relative;
+  background: linear-gradient(to right, transparent 0%, transparent 28%, #cbd4d1 29%, #cbd4d1 33%, transparent 34%, transparent 66%, #cbd4d1 67%, #cbd4d1 71%, transparent 72%, transparent 100%), linear-gradient(to bottom, transparent 0%, transparent 22%, #cbd4d1 23%, #cbd4d1 24%, transparent 24%, transparent 46%, #cbd4d1 47%, #cbd4d1 50%, rgba(0, 0, 0, 0.3) 51%, rgba(0, 0, 0, 0.3) 56%, transparent 57%, transparent 73%, #cbd4d1 74%, #cbd4d1 75%, transparent 76%, transparent 100%), #1f2329;
+}
+.first-floor-grid .window:after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  bottom: -5px;
+  left: -5px;
+  background-color: #cbd4d1;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.first-floor-grid .door {
+  grid-row: 1/6;
+  grid-column: 4/6;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.first-floor-grid .door .inner-door {
+  width: 80%;
+  height: 70%;
+  border: 4px solid #fff;
+  border-bottom: 4px solid #271213;
+  margin: 0 auto;
+  background-color: #0a0a0a;
+  position: relative;
+  text-align: center;
+  color: gray;
+  padding-top: 14px;
+  font-size: 8px;
+}
+.first-floor-grid .door .inner-door::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 10px;
+  height: 14px;
+  opacity: 0.4;
+  background-color: #171717;
+  box-shadow: 18px 0 0 #171717, 0 20px 0 #171717, 18px 20px 0 #171717, 0 40px 0 #171717, 18px 40px 0 #171717;
+}
+.first-floor-grid .door .inner-door::before {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: 19px;
+  width: 10px;
+  height: 3px;
+  background: #534332;
+}
+.first-floor-grid .door .inner-door-top {
+  border-radius: 34px 34px 0 0;
+  width: 80%;
+  height: 17px;
+  border: 4px solid #fff;
+  border-bottom: 0;
+  margin: 0 auto;
+  background-color: #0a0a0a;
+}
+.first-floor-grid .fence {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  grid-row: 5/7;
+  grid-column: 1/4;
+  position: relative;
+}
+.first-floor-grid .fence .fence-inner {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background: linear-gradient(to right, transparent 0%, transparent 2%, #000 2%, #000 4%, transparent 4%, transparent 8%, #000 8%, #000 8%, transparent 9%, transparent 13%, #000 13%, #000 14%, transparent 14%, transparent 18%, #000 18%, #000 19%, transparent 19%, transparent 23%, #000 23%, #000 24%, transparent 24%, transparent 28%, #000 28%, #000 29%, transparent 29%, transparent 33%, #000 33%, #000 34%, transparent 34%, transparent 38%, #000 38%, #000 39%, transparent 39%, transparent 43%, #000 43%, #000 44%, transparent 44%, transparent 48%, #000 48%, #000 49%, transparent 49%, transparent 53%, #000 53%, #000 54%, transparent 54%, transparent 58%, #000 58%, #000 59%, transparent 59%, transparent 63%, #000 63%, #000 64%, transparent 64%, transparent 68%, #000 68%, #000 69%, transparent 69%, transparent 73%, #000 73%, #000 74%, transparent 74%, transparent 78%, #000 78%, #000 79%, transparent 79%, transparent 83%, #000 83%, #000 84%, transparent 84%, transparent 88%, #000 88%, #000 89%, transparent 89%, transparent 93%, #000 93%, #000 94%, transparent 94%, transparent 98%, #000 98%, #000 100%), linear-gradient(to bottom, transparent 0%, transparent 15%, #000 15%, #000 18%, transparent 18%, transparent 100%);
+}
+.first-floor-grid .fence .window {
+  height: 25px;
+  background-color: #a1b1ac;
+  position: absolute;
+  left: 30px;
+  bottom: -2px;
+  z-index: 2;
+}
+.first-floor-grid .fence .window::after {
+  content: "";
+  display: none;
+}
+.first-floor-grid .stairs {
+  grid-row: 6/7;
+  grid-column: 4/6;
+  background: linear-gradient(to bottom, #6e6a6b 0%, #6e6a6b 6%, #3c3d3a 6%, #3c3d3a 24%, #6e6a6b 24%, #6e6a6b 30%, #3c3d3a 30%, #3c3d3a 48%, #6e6a6b 48%, #6e6a6b 54%, #3c3d3a 54%, #3c3d3a 72%, #6e6a6b 72%, #6e6a6b 78%, #3c3d3a 78%, #3c3d3a 100%);
+}
+
+.twelve .first-floor-grid {
+  background-color: #a4a29a;
+}
+.twelve .first-floor-grid .door .inner-door, .twelve .first-floor-grid .door .inner-door-top {
+  background-color: #30292f;
+}
+.twelve .first-floor-grid .door .inner-door {
+  border-bottom: 4px solid #212121;
+}
+.twelve .window.second, .twelve .window.first {
+  background-color: #6d6f6a;
+}
+
+.message {
+  display: none;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-welcome {
+  opacity: 0;
+}
+.message-welcome h1 {
+  font-size: 28px;
+  margin-top: 25px;
+}
+.message-welcome.shown {
+  -webkit-animation: shower 5s ease forwards;
+          animation: shower 5s ease forwards;
+}
+
+@-webkit-keyframes bloody {
+  0% {
+    color: #240dff;
+    opacity: 1;
+  }
+  25% {
+    color: #380869;
+    opacity: 1;
+  }
+  50% {
+    color: #bf0000;
+    opacity: 1;
+  }
+  75% {
+    color: #700000;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bloody {
+  0% {
+    color: #240dff;
+    opacity: 1;
+  }
+  25% {
+    color: #380869;
+    opacity: 1;
+  }
+  50% {
+    color: #bf0000;
+    opacity: 1;
+  }
+  75% {
+    color: #700000;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes hider {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes hider {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes shower {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes shower {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 800px) {
+  .answer {
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .grimmauld-place, .sidewalk, .question {
+    display: none;
+  }
+
+  .message {
+    display: flex;
+  }
+}
+.hint {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  line-height: 21px;
+  font-size: 16px;
+  text-align: left;
+  outline: 0;
+  cursor: pointer;
+  background-color: rebeccapurple;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: all 1s ease;
+}
+.hint summary {
+  width: 100%;
+  text-align: left;
+  outline: 0;
+}
+.hint[open] {
+  transition: all 1s ease;
+}
+.hint[open] summary {
+  margin-bottom: 10px;
+}
+
+details[open] {
+  transition: all 1s ease;
+}
+details[open] summary {
+  margin-bottom: 10px;
+}
+      </style>
+    </head>
+    <body>
+        <div class="grimmauld-place">
+            <div class="house eleven">
+                <div class="floor-flex">
+                    <div class="window fourth"></div><div class="window fourth"></div>
+                </div>
+                <div class="floor-flex">
+                    <div class="window third"></div><div class="window third"></div>
+                </div>
+                <div class="floor-grid">
+                    <div class="floor-flex">
+                        <div class="window second"></div><div class="window second"></div>
+                        
+                    </div>
+                    <div class="balcony"></div>
+                </div>
+                <div class="first-floor-grid">
+                    <div class="window-area">
+                        <div class="window first"></div>
+                    </div>
+                    <div class="door first"><div class="inner-door-top"></div><div class="inner-door">11</div></div>
+                    <div class="fence">
+                        <div class="fence-inner"></div>
+                        <div class="window basement"></div>
+                    </div>
+                    <div class="stairs"></div>
+                </div>
+            </div>
+            <div class="house twelve">
+                <div class="floor-flex">
+                    <div class="window fourth"></div><div class="window fourth"></div>
+                </div>
+                <div class="floor-flex">
+                    <div class="window third"></div><div class="window third"></div>
+                </div>
+                <div class="floor-grid">
+                    <div class="floor-flex">
+                        <div class="window second"></div><div class="window second"></div>
+                        
+                    </div>
+                    <div class="balcony"></div>
+                </div>
+                <div class="first-floor-grid">
+                    <div class="window-area">
+                        <div class="window first"></div>
+                    </div>
+                    <div class="door first"><div class="inner-door-top"></div><div class="inner-door">12</div></div>
+                    <div class="fence">
+                        <div class="fence-inner"></div>
+                        <div class="window basement"></div>
+                    </div>
+                    <div class="stairs"></div> 
+                </div>
+            </div>
+            <div class="house thirteen">
+                <div class="floor-flex">
+                    <div class="window fourth"></div><div class="window fourth"></div>
+                </div>
+                <div class="floor-flex">
+                    <div class="window third"></div><div class="window third"></div>
+                </div>
+                <div class="floor-grid">
+                    <div class="floor-flex">
+                        <div class="window second"></div><div class="window second"></div>
+                    </div>
+                    <div class="balcony"></div>
+                </div>
+                <div class="first-floor-grid">
+                    <div class="window-area">
+                        <div class="window first"></div>
+                    </div>
+                    <div class="door first"><div class="inner-door-top"></div><div class="inner-door">13</div></div>
+                    <div class="fence">
+                        <div class="fence-inner"></div>
+                        <div class="window basement"></div>
+                    </div>
+                    <div class="stairs"></div> 
+                </div>
+            </div>
+        </div>
+        <div class="sidewalk"></div>
+        <div class="question">
+            <h1 class="question-text">What Charm can be used to conceal a secret inside an individual's soul?</h1>
+            <h1 class="question-text-2">Now think of the name of the location you are seeking</h1>
+            <div class="answer">
+            <input type="text" name="answer" spellcheck="false" /><svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0"  viewBox="1 1 176 176">
+          <defs id="defs5"/>
+          
+          <path id="path1910" d="M 20.382927,148.85388 C 15.003029,148.16236 14.991336,148.14842 15.375994,142.88543 C 15.813941,136.89333 17.052355,127.55395 17.666511,125.61171 C 18.305239,123.59175 20.350833,121.89374 24.794224,119.69508 C 26.752539,118.72608 28.354799,117.66442 28.354799,117.33583 C 28.354799,116.98214 27.507949,116.67713 26.279055,116.58822 L 24.203311,116.43803 L 24.203311,113.01916 L 24.203311,109.60029 L 30.064235,109.46249 C 35.570572,109.33302 35.956118,109.25915 36.4369,108.24146 C 36.718361,107.64569 37.625642,105.83953 38.453082,104.22777 C 39.280517,102.61602 40.856261,99.429148 41.954725,97.14583 C 43.053194,94.862511 44.719601,91.675634 45.657847,90.06388 C 46.596097,88.452126 47.519437,86.803742 47.709712,86.400803 C 47.899987,85.997865 48.623069,84.785425 49.316567,83.706488 C 50.706988,81.543285 50.694583,81.563251 54.318904,75.655777 C 58.801182,68.349867 61.534175,64.940177 73.10987,52.212083 C 80.455986,44.134634 86.176135,38.478062 91.115521,34.406551 C 92.9959,32.856567 97.236723,29.059064 100.53957,25.967657 C 103.84242,22.876249 106.65476,20.456928 106.78922,20.591388 C 106.92368,20.725847 106.24607,22.454263 105.28341,24.43231 C 104.32075,26.410352 103.60236,28.469905 103.68698,29.009085 C 103.78676,29.644864 104.83183,28.00443 106.66047,24.341641 C 109.31491,19.024743 109.67775,18.545955 112.85377,16.169199 C 114.70929,14.780629 118.26972,12.575733 120.76584,11.269429 C 125.88481,8.5904968 129.50678,6.4897841 133.20157,4.0568016 C 137.51721,1.2149961 137.67943,1.9571883 134.11919,8.2551567 C 132.98028,10.269849 131.50101,13.127047 130.83191,14.604489 C 130.16282,16.08193 127.89704,20.477622 125.79685,24.372694 C 121.15259,32.986049 119.95628,35.216419 117.28278,40.246029 C 115.15812,44.243115 113.76355,46.079963 112.22319,46.910201 C 111.74425,47.168346 108.33759,48.432601 104.65283,49.719662 C 100.96807,51.006726 97.034091,52.530473 95.91066,53.105771 C 92.287676,54.961056 92.764926,55.946317 96.443754,54.206316 C 99.724572,52.654568 110.8196,49.042286 111.18442,49.407104 C 111.70937,49.932052 107.20784,55.743998 95.204355,70.039059 C 93.399845,72.188064 90.186349,76.034295 88.063254,78.586239 C 84.049635,83.41058 81.681412,85.408476 79.93196,85.44601 C 79.367275,85.458127 78.245909,85.769953 77.440033,86.138962 L 75.974802,86.809876 L 78.294751,86.849545 C 79.570722,86.871362 80.614699,87.07373 80.614699,87.299254 C 80.614699,87.672707 78.036948,89.863915 72.628185,94.088157 C 67.964922,97.730164 59.857116,101.7988 50.931418,104.97597 C 49.514339,105.48039 46.991788,106.61733 45.325752,107.50249 L 42.296592,109.11188 L 45.704417,109.35608 L 49.112236,109.60029 L 49.112236,113.01916 L 49.112236,116.43803 L 47.280697,116.58962 C 45.41941,116.74366 44.875198,117.59154 46.059672,118.49197 C 46.395454,118.74724 47.769108,119.35421 49.112236,119.8408 C 50.628867,120.39025 52.387168,121.5789 53.752134,122.97747 C 55.854359,125.13144 55.987255,125.44191 56.806725,130.11352 C 57.277933,132.79978 57.805563,137.79273 57.979232,141.20897 L 58.294999,147.42031 L 57.022055,147.90428 C 53.410422,149.27742 28.667093,149.9187 20.382927,148.85388 z " style="fill:black"/>
+        </svg>
+            </div>
+        </div>
+        
+        <div class="message-welcome">
+            <h1>Welcome to 12 Grimmauld Place.</h1></div>
+        <div class="message">
+            <h1>Please view this pen on a larger screen. 😅</h1></div>
+        
+        <details class="hint">
+            <summary>
+                answers
+            </summary>
+            Answer 1: Fidelius<br/>
+            Answer 2: 12 Grimmauld Place
+        </details>
+      <script>
+          $('.answer input').keyup(function() {
+  var answer = $('.answer input').val().toLowerCase();
+	
+	if (answer == 'fidelius') {
+		
+		$('.answer input').attr('disabled', true).addClass('bloody');
+		$('.answer svg').addClass('bloody');
+		var qLength = $('.question-text').text().length;
+		
+		setTimeout(function () {
+			for (i = 1; i < qLength+1; i++) { 
+					setTimeout(function () {
+						var newText = $('.question-text').text().slice(0, -1);
+						$('.question-text').html(newText);
+					}, 25*i)	
+			}
+			
+		}, 4000);
+		
+		
+		setTimeout(function () {
+			$('.question-text').hide();
+			$('.question-text-2').show().addClass('clean');
+			$('.answer input').val('').attr('disabled', false).removeClass('bloody').addClass('q2');
+			$('.answer svg').removeClass('bloody');
+		}, 6000);
+		
+  }
+	
+	if ($('.answer input').hasClass('q2')) {
+		var answer = $('.q2').val().toLowerCase();
+		if (answer == '12 grimmauld place') {
+			$('.q2').attr('disabled', true).addClass('bloody');
+			$('.answer svg').addClass('bloody');
+			$('.question-text-2').removeClass('clean').addClass('hider');
+			
+			setTimeout(function () {
+				$('.question, .answer').hide();
+				$('.house').addClass('secret');	
+				$('.message-welcome').addClass('shown');	
+				$('.eleven').animate({ 'marginRight' : "+=90px" }, 5000, 'linear');
+				$('.thirteen').animate({ 'marginLeft' : "+=90px" }, 5000, 'linear');
+			}, 5000);
+			
+		}
+	}
+	
+});
+
+
+      </script>
+    </body>
+    
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  </html>
+  
+  
+  
