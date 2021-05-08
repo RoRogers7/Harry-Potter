@@ -1,0 +1,88 @@
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+svg {
+  width: 100%;
+}
+
+.bg-sky.night {
+  transition: opacity 3s;
+}
+.night .bg-sky.night {
+  opacity: 1;
+}
+
+.windows, .windows rect, .windows polygon {
+  transition: fill 1s;
+}
+.night .windows, .night .windows rect, .night .windows polygon {
+  fill: #fff6b6;
+}
+
+.overlay {
+  transition: opacity 3s;
+}
+.overlay path {
+  fill: #000;
+}
+.night .overlay {
+  opacity: 0.4;
+}
+.night #midground .overlay {
+  opacity: 0.6;
+}
+.night #foreground .overlay {
+  opacity: 0.5;
+}
+.night #quidditch .overlay {
+  opacity: 0.6;
+}
+
+.shadow {
+  opacity: 1;
+  transition: opacity 3s;
+}
+.night .shadow {
+  opacity: 0;
+}
+
+.time {
+  position: absolute;
+  padding-top: 3%;
+  padding-left: 6.5%;
+  font: 1.2em Helvetica, Arial, sans;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.time:before {
+  content: "";
+  transition: color 1s;
+}
+.night .time:before {
+  content: "";
+  color: #fff;
+}
+
+img {
+  padding-bottom: 12%;
+}
+
+.gif {
+  padding-left: 3%;
+  margin-left: 12%;
+}
+
+.center {
+  padding-top: 38%;
+  padding-left: 15%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
