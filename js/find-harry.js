@@ -50,7 +50,7 @@ var getRandomNumber = function(size){
     $("#distance").text(distanceHint);
 
     if (distance < 8){
-      alert("Congratulations!! You found Harry Potter in " + clicks + "tries!");
+      alert("Congratulations!! You found Harry Potter in " + clicks + " tries!");
     }
 
     });
